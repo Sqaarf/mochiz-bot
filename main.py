@@ -70,7 +70,7 @@ async def rps(ctx, *args):
        else:
            response = f"{rps_choice} ! Hahaha get rekt loseeer :p"
     else:
-        reponse = f"Stop spitting nonsense it's rock, paper or scissors... MMMMMMMM"
+        response = f"Stop spitting nonsense it's rock, paper or scissors... MMMMMMMM"
     await ctx.send(response)
 
 @bot.command()
