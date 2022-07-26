@@ -85,8 +85,4 @@ async def echo(ctx, *args):
 async def hey(ctx):
     await ctx.send("Hey motherfuckaaaz :mochiz:")
 
-@bot.command()
-async def gay(ctx):
-    await ctx.send('no u fucker, gay ass mf mmmmmmmmmmmmmmmmmm shut ur gay bitch ass ayoub shaped asshole')
-
-bot.run('NTg0MTYxMjgyNTk3NDUzODY1.GeTcLs.-1XAbWLSRZqUBnxX7hZx-DITffVco65QAAleFE')
+bot.run(TOKEN)
