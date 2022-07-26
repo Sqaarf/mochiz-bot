@@ -85,4 +85,4 @@ async def echo(ctx, *args):
 async def hey(ctx):
     await ctx.send("Hey motherfuckaaaz :mochiz:")
 
-bot.run(TOKEN)
+bot.run("TOKEN")
