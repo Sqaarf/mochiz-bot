@@ -14,15 +14,17 @@ async def answer(ctx):
     choice = random.choice(eightball_answers)
     await ctx.send(choice)
 
+#------------------------------------RANDOM PICS----------------------------------------------------------------------------------
+
 @bot.command()
 async def dog(ctx):
-    r = requests.get("https://dog.ceo/api/breeds/image/random")
-    await ctx.send(r.json()["message"])
+    r = requests.get('https://some-random-api.ml/animal/dog')
+    await ctx.send(r.json()["image"])
 
 @bot.command()
 async def cat(ctx):
-    r = requests.get("https://api.thecatapi.com/v1/images/search")
-    await ctx.send(r.json()[0]["url"])
+    r = requests.get('https://some-random-api.ml/animal/cat')
+    await ctx.send(r.json()["image"])
 
 @bot.command()
 async def raccoon(ctx):
@@ -69,6 +71,7 @@ async def rps(ctx, *args):
     else:
         reponse = f"Stop spitting nonsense it's rock, paper or scissors... MMMMMMMM"
     await ctx.send(response)
+
 @bot.command()
 async def calc(ctx, *args):
     op = str(args[0])
