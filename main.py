@@ -6,15 +6,23 @@ from dotenv import load_dotenv
 import discord
 from discord.ext import commands
 
+# Load .env file if there is one
 load_dotenv()
 
+# Setup the bot with a custom prefix
+# Default prefix is 'm.'
 bot = commands.Bot(command_prefix='m.', intents=discord.Intents.default())
 
+# List of answers in 8ball command
 eightball_answers = ["Myes", "Nope" ,"100% sure", "Kinda", "Not even in your wildest dream", "idk google it ?"]
+# List of possible moves in Rock, Paper & Scissors
 rps_choices = ["Rock", "Paper", "Scissors"]
 
 @bot.command()
 async def answer(ctx):
+    '''
+    Send a random answer to a question
+    '''
     choice = random.choice(eightball_answers)
     await ctx.send(choice)
 
@@ -22,37 +30,58 @@ async def answer(ctx):
 
 @bot.command()
 async def dog(ctx):
+    '''
+    Send a random image of a dog using some-random-api.ml
+    '''
     r = requests.get('https://some-random-api.ml/animal/dog')
     await ctx.send(r.json()["image"])
 
 @bot.command()
 async def cat(ctx):
+    '''
+    Send a random image of a cat using some-random-api.ml
+    '''
     r = requests.get('https://some-random-api.ml/animal/cat')
     await ctx.send(r.json()["image"])
 
 @bot.command()
 async def raccoon(ctx):
+    '''
+    Send a random image of a raccoon using some-random-api.ml
+    '''
     r = requests.get('https://some-random-api.ml/animal/raccoon')
     await ctx.send(r.json()["image"])
 
 @bot.command()
 async def fox(ctx):
+    '''
+    Send a random image of a fox using some-random-api.ml
+    '''
     r = requests.get('https://some-random-api.ml/animal/fox')
     await ctx.send(r.json()["image"])
 
-
-
-
 @bot.command()
 async def repeat(ctx, *args):
+    '''
+    Send a given word a number given of times
+
+        Parameters:
+            args[0] (str): The word you want to be repeated
+            args[1] (str): The number of times you want thhe word to be repeated
+    '''
     word = args[0]
     coeff = int(args[1])
     response = " ".join([word for x in range(coeff)])
     await ctx.send(response)
 
-
 @bot.command()
 async def rps(ctx, *args):
+    '''
+    A game of Rock, Paper & Scissors
+
+        Parameters:
+            args[0] (str): The player of choice (Rock|Paper|Scissors)
+    '''
     rps_choice = ""
     rps_choice = random.choice(rps_choices)
     if args[0].lower() == rps_choice.lower():
@@ -78,15 +107,30 @@ async def rps(ctx, *args):
 
 @bot.command()
 async def calc(ctx, *args):
+    '''
+    Send the result of a simple mathematical calculus expression
+
+        Parameters:
+            args[0] (str): Pythonic calculus expression 
+    '''
     op = str(args[0])
     await ctx.send(str(eval(op)))
 
 @bot.command()
 async def echo(ctx, *args):
+    '''
+    Rewrite a sentence/word
+        
+        Parameters:
+            args (list<str>): The word/sentence you want to send
+    '''
     await ctx.send(" ".join(args))
 
 @bot.command()
 async def hey(ctx):
-    await ctx.send("Hey motherfuckaaaz ")
+    '''
+    Send a simple introduction
+    '''
+    await ctx.send("Hey motherfuckaaaz i'm Mochiz destroyer of worlds youuuu knooow")
 
 bot.run(os.environ.get("DISCORD_TOKEN"))
