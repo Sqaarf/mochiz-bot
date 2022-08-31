@@ -9,7 +9,9 @@ import secrets
 
 # Setup the bot with a custom prefix
 # Default prefix is 'm.'
-bot = commands.Bot(command_prefix='m.', intents=discord.Intents.default())
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='m.', intents=intents)
 
 # List of answers in 8ball command
 eightball_answers = ["Myes", "Nope" ,"100% sure", "Kinda", "Not even in your wildest dream", "idk google it ?"]
