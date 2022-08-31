@@ -1,11 +1,14 @@
 import random
 import requests
 import os
+from dotenv import load_dotenv
 
 import discord
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix='m.')
+load_dotenv()
+
+bot = commands.Bot(command_prefix='m.', intents=discord.Intents.default())
 
 eightball_answers = ["Myes", "Nope" ,"100% sure", "Kinda", "Not even in your wildest dream", "idk google it ?"]
 rps_choices = ["Rock", "Paper", "Scissors"]
