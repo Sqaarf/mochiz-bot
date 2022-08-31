@@ -1,13 +1,11 @@
 import random
 import requests
 import os
-from dotenv import load_dotenv
 
 import discord
 from discord.ext import commands
 
-# Load .env file if there is one
-load_dotenv()
+import secrets
 
 # Setup the bot with a custom prefix
 # Default prefix is 'm.'
@@ -58,6 +56,14 @@ async def fox(ctx):
     Send a random image of a fox using some-random-api.ml
     '''
     r = requests.get('https://some-random-api.ml/animal/fox')
+    await ctx.send(r.json()["image"])
+
+@bot.command()
+async def birb(ctx):
+    '''
+    Send a random image of a bird using some-random-api.ml
+    '''
+    r = requests.get('https://some-random-api.ml/animal/birb')
     await ctx.send(r.json()["image"])
 
 @bot.command()
@@ -133,4 +139,4 @@ async def hey(ctx):
     '''
     await ctx.send("Hey motherfuckaaaz i'm Mochiz destroyer of worlds youuuu knooow")
 
-bot.run(os.environ.get("DISCORD_TOKEN"))
+bot.run(secrets.DISCORD_TOKEN)
