@@ -1,11 +1,12 @@
 import random
 import requests
 import os
+from dotenv import load_dotenv
 
 import discord
 from discord.ext import commands
 
-import secrets
+load_dotenv()
 
 # Setup the bot with a custom prefix
 # Default prefix is 'm.'
@@ -141,4 +142,4 @@ async def hey(ctx):
     '''
     await ctx.send("Hey motherfuckaaaz i'm Mochiz destroyer of worlds youuuu knooow")
 
-bot.run(secrets.DISCORD_TOKEN)
+bot.run(os.environ.get("DISCORD_TOKEN"))
